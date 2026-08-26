@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jadwal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="penjadwalan">
+        <h1>jadwal apa aja</h1>
+
+       <form id="jadwal">
+          <input type="text" id="kegiatan" placeholder="nama kegiatan">
+          <input type="date" id="tanggal" required>
+          <input type="time" id="jam" required>
+          <button type="submit">tambah jadwal</button>
+       </form>
+
+       <h2>daftar agenda</h2>
+       <ul id="agenda"></ul>
+    </div>
+
+    <script>
+        var form = document.getElementById("jadwal");
+        var daftar = document.getElementById("agenda");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            var kegiatan = document.getElementById("kegiatan").value;
+            var tanggal = document.getElementById("tanggal").value;
+            var jam = document.getElementById("jam").value;
+            
+            var li = document.createElement("li");
+
+            li.innerHTML = kegiatan + " (" + tanggal + " - " + jam +")"+
+            '<button onclick="this.parentElement.remove()">hapus</button>';
+
+            
+    daftar.appendChild(li);
+
+    form.reset();
+        })
+    </script>
+</body>
+</html>
