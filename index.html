@@ -22,26 +22,32 @@
     </div>
 
     <script>
-        var form = document.getElementById("jadwal");
-        var daftar = document.getElementById("agenda");
+    var form = document.getElementById("jadwal");
+    var daftar = document.getElementById("agenda");
 
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
 
-            var kegiatan = document.getElementById("kegiatan").value;
-            var tanggal = document.getElementById("tanggal").value;
-            var jam = document.getElementById("jam").value;
-            
-            var li = document.createElement("li");
+        var kegiatan = document.getElementById("kegiatan").value;
+        var tanggal = document.getElementById("tanggal").value;
+        var jam = document.getElementById("jam").value;
 
-            li.innerHTML = kegiatan + " (" + tanggal + " - " + jam +")"+
-            '<button onclick="this.parentElement.remove()">hapus</button>';
+        var li = document.createElement("li");
 
-            
-    daftar.appendChild(li);
+        li.innerHTML = kegiatan + " - " + tanggal + " - " + jam;
 
-    form.reset();
-        })
-    </script>
+        var tombol = document.createElement("button");
+        tombol.innerText = "Hapus";
+
+        tombol.onclick = function() {
+            li.remove();
+        };
+
+        li.appendChild(tombol);
+        daftar.appendChild(li);
+
+        form.reset();
+    });
+</script>
 </body>
 </html>
