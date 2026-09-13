@@ -1,53 +1,54 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jadwal</title>
+    <title>jadwal apa aja</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="penjadwalan">
-        <h1>jadwal apa aja</h1>
 
-       <form id="jadwal">
-          <input type="text" id="kegiatan" placeholder="nama kegiatan">
-          <input type="date" id="tanggal" required>
-          <input type="time" id="jam" required>
-          <button type="submit">tambah jadwal</button>
-       </form>
+<div class="container">
 
-       <h2>daftar agenda</h2>
-       <ul id="agenda"></ul>
+    <h1>jadwal kegiatan</h1>
+
+    <input type="text" id="agenda" placeholder="Nama agenda">
+    <input type="date" id="tanggal">
+    <input type="time" id="jam">
+
+    <div class="tombol">
+        <button onclick="tambah()">tambah jadwal</button>
+        <button onclick="hapusSemua()">hapus</button>
     </div>
 
-    <script>
-    var form = document.getElementById("jadwal");
-    var daftar = document.getElementById("agenda");
+    <h2>daftar jadwal</h2>
 
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
+    <ul id="kegiatan"></ul>
 
-        var kegiatan = document.getElementById("kegiatan").value;
-        var tanggal = document.getElementById("tanggal").value;
-        var jam = document.getElementById("jam").value;
+</div>
 
-        var li = document.createElement("li");
+<script>
 
-        li.innerHTML = kegiatan + " - " + tanggal + " - " + jam;
+var kegiatan = document.getElementById("kegiatan");
 
-        var tombol = document.createElement("button");
-        tombol.innerText = "Hapus";
+function tambah() {
 
-        tombol.onclick = function() {
-            li.remove();
-        };
+    var aa = document.getElementById("agenda").value;
+    var tanggal = document.getElementById("tanggal").value;
+    var jam = document.getElementById("jam").value;
 
-        li.appendChild(tombol);
-        daftar.appendChild(li);
+    var data = document.createElement("li");
 
-        form.reset();
-    });
+    data.innerHTML = aa + " - " + tanggal + " - " + jam;
+
+    kegiatan.appendChild(data);
+}
+
+function hapusSemua() {
+    kegiatan.innerHTML = "";
+}
+
 </script>
+
 </body>
-</html>
+</html> 
